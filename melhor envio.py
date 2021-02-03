@@ -28,18 +28,12 @@ while i < 100:
         time.sleep(10)
 
         driver.find_element_by_name("iptCepDestino").send_keys(cep)
-        #driver.find_element_by_name("iptAltura-21").send_keys("11")
-        #driver.find_element_by_name("iptLargura-21").send_keys("5")
-        #driver.find_element_by_name("iptComprimento-21").send_keys("20")
-        #driver.find_element_by_name("iptPeso-21").send_keys("0,8")
-        
-        #driver.find_element_by_name("iptValorSegurado").send_keys(1000)
         driver.find_element_by_name("iptCepDestino").send_keys(Keys.RETURN)
     
         time.sleep(3)
 
         #if driver.find_element(By.CLASS_NAME, 'btnQuero').size != 0
-       #     driver.find_element_by_name("iptValorSeguradoModal").send_keys(5000)
+       #driver.find_element_by_name("iptValorSeguradoModal").send_keys(5000)
 
        # else
 
