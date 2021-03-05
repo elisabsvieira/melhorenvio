@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 from selenium.webdriver.common.by import By
 import openpyxl
-from selenium.common.exceptions import NoSuchElementException   
+  
 
 
 driver = webdriver.Chrome(executable_path=r"C:\Users\Elisa\Documents\Python\chromedriver.exe")
@@ -14,34 +14,33 @@ driver.get("https://melhorenvio.com.br/calculadora")
 driver.find_element_by_name("username").send_keys("41414723873")
 driver.find_element_by_name("password").send_keys("asdf1234")
 driver.find_element_by_name("password").send_keys(Keys.RETURN)
+time.sleep(10)
 
 i=2
 a=66
 
-while i < 100:
+while i < 10000:
 
         cep = sheet.cell(i,1).value
         nome = sheet.cell(i,2).value
         numero = sheet.cell(i,3).value
         comp = sheet.cell(i,4).value
 
-        time.sleep(10)
+        time.sleep(2)
 
         driver.find_element_by_name("iptCepDestino").send_keys(cep)
         driver.find_element_by_name("iptCepDestino").send_keys(Keys.RETURN)
     
-        time.sleep(3)
+        time.sleep(2)
 
-        #if driver.find_element(By.CLASS_NAME, 'btnQuero').size != 0
-       #driver.find_element_by_name("iptValorSeguradoModal").send_keys(5000)
+        list = driver.find_elements(By.CLASS_NAME, 'resultTableItem__inner')
+        for x in list:
+            item = x.find_element(By.CLASS_NAME, 'txtItem').text
+            if item == "SEDEX":
+                x.find_element(By.CLASS_NAME, 'btnQuero').click()
+                break
 
-       # else
 
-        btn_more = driver.find_element(By.CLASS_NAME, 'btnQuero')
-        btn_more.click()
-
-        #btn_more = driver.find_element(By.XPATH, "//*[ contains (text(), 'Selecionar' )]")
-        # btn_more = driver.find_element(By.XPATH, //*[@id="secCalculator"]/div/form/div[2]/div[2]/div/div[3]/ul[2]/li[1]/ul/li[6]/span/button)
 
         time.sleep(2)
 
